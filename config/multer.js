@@ -21,7 +21,7 @@ import path from "path";
 import fs from "fs";
 
 // Use /tmp directory instead
-const uploadPath = "/uploads";
+const uploadPath = "./uploads";
 
 // Ensure /uploads exists
 fs.mkdirSync(uploadPath, { recursive: true });
