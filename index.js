@@ -60,4 +60,4 @@ app.use("/api/address", addressRoutes);
 
 
 // ✅ Required for Vercel Serverless
-export const handler = ServerlessHttp(app);
+module.exports = serverless(app);
