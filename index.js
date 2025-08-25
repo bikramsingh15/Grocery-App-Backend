@@ -10,6 +10,7 @@ import cartRoutes from "./routes/cart.routes.js";
 import orderRoutes from "./routes/order.routes.js";
 import addressRoutes from "./routes/address.routes.js";
 import { connectCloudinary } from "./config/cloudinary.js";
+import ServerlessHttp from "serverless-http";
 
 dotenv.config();
 
@@ -51,8 +52,12 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/address", addressRoutes);
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
-  console.log("Server is running");
-});
+// app.listen(PORT, () => {
+//   console.log("Server is running");
+// });
+
+
+// ✅ Required for Vercel Serverless
+export const handler = ServerlessHttp(app);
