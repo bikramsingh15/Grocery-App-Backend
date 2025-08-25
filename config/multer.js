@@ -21,9 +21,9 @@ import path from "path";
 import fs from "fs";
 
 // Use /tmp directory instead
-const uploadPath = "./uploads";
+const uploadPath = "/tmp/uploads";
 
-// Ensure /uploads exists
+// Ensure /tmp/uploads exists
 fs.mkdirSync(uploadPath, { recursive: true });
 
 const storage = multer.diskStorage({
