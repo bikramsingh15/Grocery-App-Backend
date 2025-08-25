@@ -6,19 +6,18 @@ import { v2 as cloudinary } from "cloudinary";
 export const addProduct = async (req, res) => {
     try {
         const { name, description, price, offerPrice, category } = req.body;
-        const image = req.files?.map((file) => file.filename);
 
-        // const images = req.files;
-        // let imgUrl = await Promise.all(
-        //     images.map(async (item) => {
-        //         let result = await cloudinary.uploader.upload(item.path, {
-        //             resource_type: "image"
-        //         })
-        //         return result.secure_url;
-        //     })
-        // )
+        const images = req.files;
+        let imgUrl = await Promise.all(
+            images.map(async (item) => {
+                let result = await cloudinary.uploader.upload(item.path, {
+                    resource_type: "image"
+                })
+                return result.secure_url;
+            })
+        )
 
-        if (!name || !description || !price || !offerPrice || !category || !image || image.length === 0) {
+        if (!name || !description || !price || !offerPrice || !category || !images || images.length === 0) {
             res.status(400).json({
                 message: "All fields including images are required",
                 success: false
@@ -31,7 +30,7 @@ export const addProduct = async (req, res) => {
             price,
             offerPrice,
             category,
-            image
+            image: imgUrl
         })
         res.status(201).json({
             message: "Product added successfully",
