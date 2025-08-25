@@ -18,7 +18,7 @@ const app = express();
 connectDB();
 connectCloudinary();
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173, https://grocery-app-frontend-virid.vercel.app"];
 // middlewares
 app.use(express.json());
 app.use(cors({ origin: allowedOrigins, credentials: true }));
