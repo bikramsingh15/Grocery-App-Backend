@@ -25,7 +25,7 @@ app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(cookieParser());
 
 // API EndPoints
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   return res.send({ message: "I am Live on Vercel" });
 });
 app.use("/images", express.static("uploads"));
